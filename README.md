@@ -1,1 +1,4 @@
-# mikey-s_bagel_status
+# Mikey's Bagel Status
+
+Hosted by @shaneossa
+Curated by @justincadburywong
