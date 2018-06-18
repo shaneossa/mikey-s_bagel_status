@@ -5,6 +5,7 @@ var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var pkg = require('./package.json');
+var imageResize = require('gulp-image-resize');
 var browserSync = require('browser-sync').create();
 
 // Set the banner content
@@ -89,8 +90,21 @@ gulp.task('js:minify', function() {
 // JS
 gulp.task('js', ['js:minify']);
 
+// Images
+gulp.task('images', function () {
+  return gulp.src([
+    './img/*.jpg',
+    './img/*.jpeg'
+  ])
+    .pipe(imageResize({
+      width : 730,
+      height : 973
+    }))
+    .pipe(gulp.dest('./img'));
+});
+
 // Default task
-gulp.task('default', ['css', 'js', 'vendor']);
+gulp.task('default', ['css', 'js', 'vendor', 'images']);
 
 // Configure the browserSync task
 gulp.task('browserSync', function() {
